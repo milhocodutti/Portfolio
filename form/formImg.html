@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Pedido</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        .submit-btn {
+            margin-top: 20px;
+            padding: 10px 15px;
+        }
+        .product-image {
+            margin-top: 10px;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Formulario de Pedido o Consulta</h2>
+<form id="pedidoForm" enctype="multipart/form-data">
+    <label for="nombreApellido">Nombre y Apellido:</label>
+    <input type="text" id="nombreApellido" name="nombreApellido" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="telefono">Número de Teléfono:</label>
+    <input type="tel" id="telefono" name="telefono" required>
+
+    <label for="fechaPedido">Fecha de Pedido:</label>
+    <input type="date" id="fechaPedido" name="fechaPedido" min="" required>
+
+    <label for="tipoProducto">Tipo de Producto:</label>
+    <select id="tipoProducto" name="tipoProducto" required onchange="updateProductos()">
+        <option value="">Seleccione un tipo de producto</option>
+        <option value="tortas">Tortas</option>
+        <option value="postres">Postres</option>
+        <option value="panaderia">Panadería</option>
+    </select>
+
+    <label for="producto">Producto:</label>
+    <select id="producto" name="producto" required onchange="updateImagen()">
+        <option value="">Seleccione un producto</option>
+    </select>
+
+    <img id="productImage" class="product-image" src="" alt="Imagen del producto" style="display: none;">
+
+    <label for="consulta">Consulta o Indicación:</label>
+    <textarea id="consulta" name="consulta"></textarea>
+
+    <label for="pedidoConsulta">Seleccione:</label>
+    <input type="checkbox" id="pedido" name="pedidoConsulta" value="pedido"> Pedido
+    <input type="checkbox" id="consulta" name="pedidoConsulta" value="consulta"> Consulta
+
+    <label for="imagen">Subir Imagen de Ejemplo:</label>
+    <input type="file" id="imagen" name="imagen">
+
+    <button type="submit" class="submit-btn">Enviar</button>
+</form>
+
+<script>
+    // Actualizar la fecha mínima del campo de fecha de pedido
+    const fechaPedido = document.getElementById('fechaPedido');
+    const hoy = new Date().toISOString().split('T')[0];
+    fechaPedido.setAttribute('min', hoy);
+
+    // Productos y sus imágenes
+    const productos = {
+        tortas: [
+            { nombre: 'Torta de Chocolate', imagen: 'ruta_a_imagen_torta_de_chocolate.jpg' },
+            { nombre: 'Torta Red Velvet', imagen: 'ruta_a_imagen_torta_red_velvet.jpg' },
+            { nombre: 'Torta Tres Leches', imagen: 'ruta_a_imagen_torta_tres_leches.jpg' },
+            { nombre: 'Torta de Zanahoria', imagen: 'ruta_a_imagen_torta_de_zanahoria.jpg' },
+            { nombre: 'Torta de Fresas con Crema', imagen: 'ruta_a_imagen_torta_fresas_con_crema.jpg' }
+        ],
+        postres: [
+            { nombre: 'Cheesecake Clásico', imagen: 'ruta_a_imagen_cheesecake_clasico.jpg' },
+            { nombre: 'Tiramisú', imagen: 'ruta_a_imagen_tiramisu.jpg' },
+            { nombre: 'Macarons', imagen: 'ruta_a_imagen_macarons.jpg' },
+            { nombre: 'Brownies', imagen: 'ruta_a_imagen_brownies.jpg' },
+            { nombre: 'Panna Cotta', imagen: 'ruta_a_imagen_panna_cotta.jpg' }
+        ],
+        panaderia: [
+            { nombre: 'Croissants', imagen: 'ruta_a_imagen_croissants.jpg' },
+            { nombre: 'Pan de Ciabatta', imagen: 'ruta_a_imagen_pan_de_ciabatta.jpg' },
+            { nombre: 'Conchas', imagen: 'ruta_a_imagen_conchas.jpg' },
+            { nombre: 'Pan de Centeno', imagen: 'ruta_a_imagen_pan_de_centeno.jpg' },
+            { nombre: 'Bollos de Canela', imagen: 'ruta_a_imagen_bollos_de_canela.jpg' }
+        ]
+    };
+
+    // Función para actualizar la lista de productos según el tipo seleccionado
+    function updateProductos() {
+        const tipoProducto = document.getElementById('tipoProducto').value;
+        const productoSelect = document.getElementById('producto');
+        productoSelect.innerHTML = '<option value="">Seleccione un producto</option>';
+
+        if (productos[tipoProducto]) {
+            productos[tipoProducto].forEach(producto => {
+                const option = document.createElement('option');
+                option.value = producto.imagen;
+                option.textContent = producto.nombre;
+                productoSelect.appendChild(option);
+            });
+        }
+    }
+
+    // Función para actualizar la imagen del producto seleccionado
+    function updateImagen() {
+        const productoSelect = document.getElementById('producto');
+        const productImage = document.getElementById('productImage');
+        const selectedImage = productoSelect.value;
+
+        if (selectedImage) {
+            productImage.src = selectedImage;
+            productImage.style.display = 'block';
+        } else {
+            productImage.style.display = 'none';
+        }
+    }
+
+    // Validación del formulario
+    document.getElementById('pedidoForm').addEventListener('submit', function(event) {
+        const nombreApellido = document.getElementById('nombreApellido').value;
+        const email = document.getElementById('email').value;
+        const tipoProducto = document.getElementById('tipoProducto').value;
+        const producto = document.getElementById('producto').value;
+
+        if (!nombreApellido) {
+            alert('Por favor, ingrese su nombre y apellido.');
+            event.preventDefault();
+        } else if (!email) {
+            alert('Por favor, ingrese su email.');
+            event.preventDefault();
+        } else if (!tipoProducto) {
+            alert('Por favor, seleccione un tipo de producto.');
+            event.preventDefault();
+        } else if (!producto) {
+            alert('Por favor, seleccione un producto específico.');
+            event.preventDefault();
+        }
+    });
+</script>
+
+</body>
+</html>
