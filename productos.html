@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            width: 80%;
+        }
+        .product {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .product img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .product h2 {
+            margin-top: 15px;
+        }
+        .product p {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="product-container">
+        <!-- Los productos se cargarán aquí automáticamente -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('productos.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al cargar el archivo JSON');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const container = document.getElementById('product-container');
+                    data.forEach(producto => {
+                        const productDiv = document.createElement('div');
+                        productDiv.classList.add('product');
+                        
+                        const img = document.createElement('img');
+                        img.src = producto.imagen;
+                        img.alt = producto.nombre;
+                        
+                        const h2 = document.createElement('h2');
+                        h2.textContent = producto.nombre;
+                        
+                        const p = document.createElement('p');
+                        p.textContent = producto.descripcion;
+                        
+                        productDiv.appendChild(img);
+                        productDiv.appendChild(h2);
+                        productDiv.appendChild(p);
+                        
+                        container.appendChild(productDiv);
+                    });
+                })
+                .catch(error => console.error('Error cargando productos:', error));
+        });
+    </script>
+</body>
+</html>

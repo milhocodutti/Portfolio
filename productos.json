@@ -1,0 +1,5 @@
+[
+    { "nombre": "Chesscake", "descripcion": "Descripción del producto 1", "imagen": "statics/img/chesscake.jpg" },
+    { "nombre": "Tiramisu", "descripcion": "Descripción del producto 2", "imagen": "statics/img/tiramisu.jpg" },
+    { "nombre": "Chocotorta", "descripcion": "Descripción del producto 3", "imagen": "statics/img/chocotortas.jpg" }
+]
