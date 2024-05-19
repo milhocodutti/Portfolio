@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contacto.css">
+    <title>Contacto</title>
+</head>
+<body>
+    <div class="consulta">
+        <h1>Formulario de Pedido o Consulta</h1>
+            <form action="/action_page.php" method="get">
+            <div class="username"><label for="nombre">Nombre</label><br>
+            <input type="text" id="nombre" name="nombre" required></div><br>
+            <div class="username">
+            <label for="apellido">Apellido</label><br>
+            <input type="text" id="apellido" name="apellido" required></div><br>
+            <div class="username">
+            <label for="apellido">Correo electronico</label><br>
+            <input type="text" id="Correo" name="Correo" required></div><br>
+
+            <div class="username">
+                <label for="telefono">Telefono</label><br>
+                <input type="tel" id="Telefono" name="Telefono" required></div><br>
+
+            <div class="username">
+                <label for="fechaPedido">Fecha de Pedido:</label><br>
+                <input type="date" id="fechaPedido" name="fechaPedido" min="" required></div><br>
+            
+            <div class="clear">
+                <label for="tipoProducto">Tipo de Producto:</label><br>
+                <select class="boton-enviar" id="tipoProducto" name="tipoProducto" required onchange="updateProductos()">
+                    <option value="">Seleccione un tipo de producto</option>
+                    <option value="tortas">Tortas</option>
+                    <option value="postres">Postres</option>
+                    <option value="panaderia">Panadería</option>
+                </select></div><br>
+            
+            <div class="clear">
+                <label for="producto">Producto:</label><br>
+                <select class="boton-enviar" id="producto" name="producto" required>
+                    <option value="">Seleccione un producto</option>
+                </select></div><br>
+            
+            <div class="clear">
+            <label for="apellido">Escribinos tu consulta</label><br>
+            <textarea class="clear textarea" type="text" id="consulta" name="consulta" required></textarea></div><br>
+            <br>
+
+            <div class="clear">
+                <label for="pedidoConsulta">Seleccione:</label><br>
+                <input type="checkbox" id="pedido" name="pedidoConsulta" value="pedido"> Pedido
+                <input type="checkbox" id="consulta" name="pedidoConsulta" value="consulta"> Consulta
+            </div><br>
+
+            <div class="clear">
+                <label class="custom-file-upload" for="imagen">Subir Comprobante de Pago</label>
+                <input class="file-input" type="file" id="imagen" name="imagen">
+            </div><br>
+
+
+
+            <input type="submit" value="enviar" class="boton-enviar">
+            <!-- Mail , Text Area, Boton Wpp, -->
+            </form>
+
+           
+            
+            
+            <script>
+                // Actualizar la fecha mínima del campo de fecha de pedido
+                const fechaPedido = document.getElementById('fechaPedido');
+                const hoy = new Date().toISOString().split('T')[0];
+                fechaPedido.setAttribute('min', hoy);
+            
+                // Función para actualizar la lista de productos según el tipo seleccionado
+                function updateProductos() {
+                    const tipoProducto = document.getElementById('tipoProducto').value;
+                    const productoSelect = document.getElementById('producto');
+                    productoSelect.innerHTML = '<option value="">Seleccione un producto</option>';
+            
+                    let productos = [];
+                    if (tipoProducto === 'tortas') {
+                        productos = ['Torta de Chocolate', 'Torta Red Velvet', 'Torta Tres Leches', 'Torta de Zanahoria', 'Torta de Fresas con Crema'];
+                    } else if (tipoProducto === 'postres') {
+                        productos = ['Cheesecake Clásico', 'Tiramisú', 'Macarons', 'Brownies', 'Panna Cotta'];
+                    } else if (tipoProducto === 'panaderia') {
+                        productos = ['Croissants', 'Pan de Ciabatta', 'Conchas', 'Pan de Centeno', 'Bollos de Canela'];
+                    }
+            
+                    productos.forEach(producto => {
+                        const option = document.createElement('option');
+                        option.value = producto;
+                        option.textContent = producto;
+                        productoSelect.appendChild(option);
+                    });
+                }
+            
+                // Validación del formulario
+                document.getElementById('pedidoForm').addEventListener('submit', function(event) {
+                    const nombreApellido = document.getElementById('nombreApellido').value;
+                    const email = document.getElementById('email').value;
+                    const tipoProducto = document.getElementById('tipoProducto').value;
+                    const producto = document.getElementById('producto').value;
+            
+                    if (!nombreApellido) {
+                        alert('Por favor, ingrese su nombre y apellido.');
+                        event.preventDefault();
+                    } else if (!email) {
+                        alert('Por favor, ingrese su email.');
+                        event.preventDefault();
+                    } else if (!tipoProducto) {
+                        alert('Por favor, seleccione un tipo de producto.');
+                        event.preventDefault();
+                    } else if (!producto) {
+                        alert('Por favor, seleccione un producto específico.');
+                        event.preventDefault();
+                    }
+                });
+            </script>
+
+
+        </div>
+</body>
+</html>

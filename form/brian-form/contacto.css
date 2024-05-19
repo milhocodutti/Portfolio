@@ -1,0 +1,224 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body  {
+    display: flex;
+    min-height: 70px;
+    justify-content: space-between;
+    background-color: #666666;
+    align-items: center;
+    padding: 10px;
+    position: sticky;
+    top: 0px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-family: sans-serif, Verdana, Geneva, Tahoma;
+    color: #11202e;
+}
+
+.logo img{
+    height: 50px;
+    margin-right: 10px;
+}
+
+#menu_navegacion{
+    width: 500px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+ul, ol{
+    list-style: none;
+}
+
+.barra_navegacion li a {
+    background-color: black;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: flex;
+}
+
+.barra_navegacion li a:hover {
+    background-color: #434343;
+}
+
+.barra_navegacion > li {
+    float:left ;
+}
+
+.barra_navegacion li ul {
+    display: none;  
+    position: absolute;
+    min-width: 140px;
+}
+
+.barra_navegacion li:hover > ul {
+    display: block;
+}
+
+.barra_navegacion li ul li {
+    position: relative;
+}
+
+.barra_navegacion li ul li ul {
+    right: -140px;
+    top:0px;
+}
+
+#banner_portada {
+    min-height: 100vh;
+    /* background-image: url(./images/attachment-yeh-xintong-go3DT3PpIw4-unsplash-2.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed; */
+    background: url(./images/attachment-yeh-xintong-go3DT3PpIw4-unsplash-2.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.home_section {
+    width: 95vw;
+    min-height: 800px;
+    color: red;
+}
+
+@media (max-width: 1000px){
+    header{
+        flex-direction: column;
+    }
+}
+
+.consulta {
+    position:static;
+    top: 50%;
+    left: 50%;
+    /* transform: translate(-50%, -50%); */
+    width: 400px;
+    background: white;
+    border-radius: 10px;
+    margin: auto;
+    text-align: center
+
+}
+
+.consulta h1{
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid black;
+}
+
+.consulta form{
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+form .username {
+    position: relative;
+    border-bottom: 2px solid black;
+    margin: 30px 0;
+}
+
+.username input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.username label{
+    position: absolute;
+    top: 0%;
+    left: 5px;
+    color: black;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+
+}
+.username textarea{
+    
+    padding: 0;
+}
+
+/*Se crea class CLEAR para adaptar elementos extras del FORM*/
+.clear{
+    position: relative;
+    border:none;
+    margin: 30px 0;
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+    text-align: left;
+    width: 100%; /* Establece el ancho del textarea al 100% del ancho del contenedor */
+    box-sizing: border-box; /* Esto asegura que el ancho incluya el padding y el borde */
+    margin-bottom: auto;
+}
+/*Configuracion para el text area*/
+.textarea{
+    background-color: #4CAF50;
+    border-radius: 5px;
+
+}
+/*Configuración para boton de subir imagen*/
+.file-input {
+    display: none;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+
+.username span::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: blue
+}
+
+.boton-enviar {
+    background-color: #4CAF50; /* Color de fondo */
+    border: none; /* Sin borde */
+    color: white; /* Color del texto */
+    margin: 10px 0;
+    padding: 10px 20px; /* Espacio interno */
+    text-align: center; /* Alineación del texto */
+    text-decoration: none; /* Sin decoración de texto */
+    display: inline-block; /* Mostrar como bloque en línea */
+    font-size: 16px; /* Tamaño del texto */
+    border-radius: 5px; /* Borde redondeado */
+    cursor: pointer; /* Cursor de apuntador */
+  }
+  
+  .boton-enviar:hover {
+    background-color: #2c652f; /* Cambio de color de fondo al pasar el ratón */
+  }
+  
+  .boton-enviar:active {
+    background-color: #3e8e41; /* Cambio de color de fondo al hacer clic */
+  }
+  
+
