@@ -1,0 +1,5 @@
+[
+    { "nombre": "Chesscake", "descripcion": "Postre a base de queso", "imagen": "statics/img/chesscake.jpg" },
+    { "nombre": "Tiramisu", "descripcion": "Descripción del producto 2", "imagen": "statics\img\chocotorta.jpeg" },
+    { "nombre": "Chocotorta", "descripcion": "Descripción del producto 3", "imagen": "statics/img/chocotorta.jpg" }
+]
