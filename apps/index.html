@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Milho Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <aside class="sidebar">
+    <h2>Planner</h2>
+    <button onclick="loadTasks()">Dashboard</button>
+  </aside>
+
+  <main class="main">
+    <h1>Gestor de Tareas</h1>
+
+    <div class="form">
+      <input id="taskInput" placeholder="Nueva tarea..." />
+      <input type="date" id="dateInput" />
+      <button onclick="addTask()">Agregar</button>
+    </div>
+
+    <div id="stats" class="stats"></div>
+
+    <ul id="taskList"></ul>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
