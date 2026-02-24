@@ -17,10 +17,24 @@
     <h1>Gestor de Tareas</h1>
 
     <div class="form">
-      <input id="taskInput" placeholder="Nueva tarea..." />
-      <input type="date" id="dateInput" />
-      <button onclick="addTask()">Agregar</button>
-    </div>
+  <input id="taskInput" placeholder="Nueva tarea..." />
+
+  <select id="priorityInput">
+    <option value="baja">Baja</option>
+    <option value="media">Media</option>
+    <option value="alta">Alta</option>
+  </select>
+
+  <select id="categoryInput">
+    <option value="Personal">Personal</option>
+    <option value="Trabajo">Trabajo</option>
+    <option value="Pareja">Pareja</option>
+    <option value="Salud">Salud</option>
+  </select>
+
+  <input type="date" id="dateInput" />
+  <button onclick="addTask()">Agregar</button>
+</div>
 
     <div id="stats" class="stats"></div>
 

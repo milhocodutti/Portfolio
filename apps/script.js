@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbxp3HJYMVJLffQdgmnqNM9_QppJCI4yWEYnXcgUH_saTkRMX_iveTjaYz8mhOROGRtScA/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwHekPXAru7ia6M-cS7XMDLeUQ8tZx5RKlK-Qpa5zZNz81GM4WO3nyb5irOX0kpCv9q_Q/execc";
 
 let tasks = [];
 
@@ -9,8 +9,10 @@ async function loadTasks() {
   tasks = data.slice(1).map(row => ({
     id: String(row[0]),
     tarea: row[1],
-    estado: String(row[2]) === "true",
-    fecha: row[3]
+    estado: row[2],
+    prioridad: row[3],
+    categoria: row[4],
+    fecha: row[5]
   }));
 
   render();
@@ -27,13 +29,19 @@ function render(filterDate = null) {
   filtered.forEach(task => {
     const li = document.createElement("li");
 
-    if (task.estado) li.classList.add("done");
+    if (task.estado === "completada") li.classList.add("done");
+
+    li.classList.add(task.prioridad);
 
     li.innerHTML = `
-      <span>${task.tarea} (${formatDate(task.fecha)})</span>
+      <span>
+        ${task.tarea} 
+        [${task.prioridad.toUpperCase()}] 
+        (${task.categoria}) 
+        - ${formatDate(task.fecha)}
+      </span>
       <div>
         <button onclick="toggleTask('${task.id}')">✔</button>
-        <button onclick="editTask('${task.id}')">✏</button>
         <button onclick="deleteTask('${task.id}')">🗑</button>
       </div>
     `;
@@ -44,12 +52,13 @@ function render(filterDate = null) {
 
 function formatDate(dateStr) {
   if (!dateStr) return "";
-  const d = new Date(dateStr);
-  return d.toLocaleDateString();
+  return new Date(dateStr).toLocaleDateString();
 }
 
 async function addTask() {
   const task = document.getElementById("taskInput").value.trim();
+  const priority = document.getElementById("priorityInput").value;
+  const category = document.getElementById("categoryInput").value;
   const date = document.getElementById("dateInput").value;
 
   if (!task || !date) return;
@@ -60,7 +69,9 @@ async function addTask() {
       action: "add",
       id: Date.now().toString(),
       tarea: task,
-      estado: "false",
+      estado: "pendiente",
+      prioridad: priority,
+      categoria: category,
       fecha: date
     })
   });
@@ -72,33 +83,16 @@ async function addTask() {
 async function toggleTask(id) {
   const task = tasks.find(t => t.id === id);
 
-  await fetch(API_URL, {
-    method: "POST",
-    body: JSON.stringify({
-      action: "update",
-      id: task.id,
-      tarea: task.tarea,
-      estado: (!task.estado).toString(),
-      fecha: task.fecha
-    })
-  });
-
-  loadTasks();
-}
-
-async function editTask(id) {
-  const task = tasks.find(t => t.id === id);
-  const newText = prompt("Editar tarea:", task.tarea);
-  if (!newText) return;
+  const newState = task.estado === "pendiente"
+    ? "completada"
+    : "pendiente";
 
   await fetch(API_URL, {
     method: "POST",
     body: JSON.stringify({
       action: "update",
-      id: task.id,
-      tarea: newText,
-      estado: task.estado.toString(),
-      fecha: task.fecha
+      ...task,
+      estado: newState
     })
   });
 
@@ -106,8 +100,6 @@ async function editTask(id) {
 }
 
 async function deleteTask(id) {
-  if (!confirm("¿Eliminar tarea?")) return;
-
   await fetch(API_URL, {
     method: "POST",
     body: JSON.stringify({
@@ -117,11 +109,6 @@ async function deleteTask(id) {
   });
 
   loadTasks();
-}
-
-function filterByDate() {
-  const date = document.getElementById("filterDate").value;
-  render(date);
 }
 
 loadTasks();
