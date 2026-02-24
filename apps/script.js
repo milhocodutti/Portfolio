@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbwHekPXAru7ia6M-cS7XMDLeUQ8tZx5RKlK-Qpa5zZNz81GM4WO3nyb5irOX0kpCv9q_Q/execc";
+const API_URL = "https://script.google.com/macros/s/AKfycbx_ynLXb9Pl3rH6JKhgSRFHCWpsxLAFbVGzHuKaShgJtjNWYmOvl7Z6qOYVR71QzhYl6w/exec";
 
 let tasks = [];
 
