@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Aplicaciones</title>
+    <link rel="stylesheet" href="css/apps.css">
+</head>
+<body>
+
+    <header>
+        <h1>Mis Aplicaciones</h1>
+        <p>Selecciona una aplicación para abrirla.</p>
+    </header>
+
+    <main class="apps-container">
+
+        <!-- Aplicación -->
+        <a href="/apps/aplications/gestor/gestor.html" class="app-card">
+            <div class="icon">📂</div>
+            <h2>Gestor</h2>
+            <p>Administrador de archivos y herramientas.</p>
+        </a>
+
+        <!-- Aplicación -->
+        <a href="/apps/password/password.html" class="app-card">
+            <div class="icon">🔐</div>
+            <h2>Password Keeper</h2>
+            <p>Gestor de contraseñas.</p>
+        </a>
+
+        <!-- Aplicación -->
+        <a href="/apps/calculadora/index.html" class="app-card">
+            <div class="icon">🧮</div>
+            <h2>Calculadora</h2>
+            <p>Herramientas de cálculo.</p>
+        </a>
+
+        <!-- Aplicación -->
+        <a href="/apps/notas/index.html" class="app-card">
+            <div class="icon">📝</div>
+            <h2>Notas</h2>
+            <p>Bloc de notas online.</p>
+        </a>
+
+        <!-- Próximamente -->
+        <div class="app-card disabled">
+            <div class="icon">🚧</div>
+            <h2>Próximamente</h2>
+            <p>Nueva aplicación en desarrollo.</p>
+        </div>
+
+    </main>
+
+</body>
+</html>
+<style style="display:none;">
+*{
+background-color:black;
+font-family: consolas;
+color: #00ff00;
+border:solid 1px #00ff00;
+heigth:150px;
+width:300px;
+display:inline-block;
+margin:auto;
+padding:15px;
+border-radius:%2;
+text-align: center; 
+}
+.app-card, h2, a, p, h1  { 
+display: inline-block; 
+padding: 12px 20px; 
+border-radius: 10px; 
+text-align: center; 
+font-weight: bold; 
+text-decoration: none; 
+background: ; 
+color: white; 
+}
+a{
+box-shadow: 0 0 100px #00ff00;
+}
+h2{
+box-shadow: 0 0 1000px #00ff00;
+}
+
+</style>
