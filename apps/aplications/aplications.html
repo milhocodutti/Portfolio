@@ -16,7 +16,7 @@
     <main class="apps-container">
 
         <!-- Aplicación -->
-        <a href="/apps/aplications/gestor/gestor.html" class="app-card">
+        <a href="gestor/gestor.html" class="app-card">
             <div class="icon">📂</div>
             <h2>Gestor</h2>
             <p>Administrador de archivos y herramientas.</p>
@@ -44,31 +44,46 @@
         </a>
 
         <!-- Próximamente -->
-        <div class="app-card disabled">
+        <a class="app-card">
             <div class="icon">🚧</div>
             <h2>Próximamente</h2>
             <p>Nueva aplicación en desarrollo.</p>
-        </div>
+        </a>
 
     </main>
 
 </body>
 </html>
 <style style="display:none;">
-*{
+/*{
 background-color:black;
 font-family: consolas;
 color: #00ff00;
 border:solid 1px #00ff00;
-heigth:150px;
+height:auto;
 width:300px;
-display:inline-block;
+display:block;
 margin:auto;
 padding:15px;
 border-radius:%2;
 text-align: center; 
+}*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
-.app-card, h2, a, p, h1  { 
+body{
+
+    background:black;
+
+    color:#00ff00;
+
+    font-family:Consolas;
+
+}
+
+/*.app-card, h2, a, p, h1  { 
 display: inline-block; 
 padding: 12px 20px; 
 border-radius: 10px; 
@@ -77,12 +92,65 @@ font-weight: bold;
 text-decoration: none; 
 background: ; 
 color: white; 
-}
+}*/
 a{
-box-shadow: 0 0 100px #00ff00;
+    box-shadow: 0 0 100px #00ff00;
+
 }
-h2{
-box-shadow: 0 0 1000px #00ff00;
+a:hover{
+    box-shadow: 0 0 10px #00ff00;
+}
+p, h1, h2{
+
+border-radius: 5px;
 }
 
+.apps-container{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:25px;
+
+    max-width:1200px;
+
+    margin:50px auto;
+}
+.app-card{
+
+    width:180px;
+
+    height:220px;
+
+    background:#000000;
+
+    border-radius:10px;
+
+    padding:20px;
+
+    text-decoration:none;
+
+    color:#00ff00;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transition:.3s;
+    
+
+}
+.icon{
+
+    font-size: 60px;
+   
+
+}
 </style>

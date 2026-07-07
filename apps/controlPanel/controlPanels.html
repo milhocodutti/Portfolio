@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Control Panel</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,Arial,sans-serif;
+}
+
+body{
+    background:#eef2f7;
+}
+
+header{
+    background:#1f4e5f;
+    color:white;
+    text-align:center;
+    padding:25px;
+    box-shadow:0 3px 8px rgba(0,0,0,.2);
+}
+
+header h1{
+    font-size:32px;
+}
+
+header p{
+    margin-top:8px;
+    opacity:.9;
+}
+
+main{
+    max-width:1200px;
+    margin:auto;
+    padding:40px;
+}
+
+.apps{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(230px,1fr));
+
+    gap:25px;
+
+}
+
+.app-card{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    text-decoration:none;
+
+    color:#333;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.12);
+
+    transition:.25s;
+
+}
+
+.app-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+
+}
+
+.icon{
+
+    font-size:55px;
+
+    text-align:center;
+
+}
+
+.app-title{
+
+    margin-top:15px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    text-align:center;
+
+}
+
+.app-description{
+
+    margin-top:12px;
+
+    color:#666;
+
+    text-align:center;
+
+    font-size:15px;
+
+}
+
+footer{
+
+    text-align:center;
+
+    padding:20px;
+
+    color:#666;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Control Panel</h1>
+
+<p>Seleccione una aplicación</p>
+
+</header>
+
+<main>
+
+<div class="apps">
+
+<!---------------- APP ---------------->
+
+<a href="panels/riegoAutomatizado.html" target="_blank" class="app-card">
+
+<div class="icon">🌱</div>
+
+<div class="app-title">Riego Inteligente</div>
+
+<div class="app-description">
+
+Sistema de monitoreo y control de riego.
+
+</div>
+
+</a>
+
+<!---------------- APP ---------------->
+
+<a href="apps/gestor/gestor.html" class="app-card">
+
+<div class="icon">📋</div>
+
+<div class="app-title">Administrador de Tareas</div>
+
+<div class="app-description">
+
+Gestión administrativa.
+
+</div>
+
+</a>
+
+<!---------------- APP ---------------->
+
+<a href="#" class="app-card">
+
+<div class="icon">📦</div>
+
+<div class="app-title">Inventario</div>
+
+<div class="app-description">
+
+Control de stock.
+
+</div>
+
+</a>
+
+<!---------------- APP ---------------->
+
+<a href="#" class="app-card">
+
+<div class="icon">📊</div>
+
+<div class="app-title">Reportes</div>
+
+<div class="app-description">
+
+Estadísticas del sistema.
+
+</div>
+
+</a>
+
+<!---------------- APP ---------------->
+
+<a href="#" class="app-card">
+
+<div class="icon">⚙️</div>
+
+<div class="app-title">Configuración</div>
+
+<div class="app-description">
+
+Opciones generales.
+
+</div>
+
+</a>
+
+<!---------------- APP ---------------->
+
+<a href="#" class="app-card">
+
+<div class="icon">👤</div>
+
+<div class="app-title">Usuarios</div>
+
+<div class="app-description">
+
+Administración de usuarios.
+
+</div>
+
+</a>
+
+</div>
+
+</main>
+
+<footer>
+
+Control Panel v1.0
+
+</footer>
+
+</body>
+</html>

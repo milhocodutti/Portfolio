@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Plataforma Multimedia</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#0f1117;
+    color:white;
+}
+
+/*================ NAV =================*/
+
+nav{
+    height:70px;
+    background:#181c25;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 30px;
+    position:sticky;
+    top:0;
+    z-index:999;
+    border-bottom:1px solid #2b3240;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:#4da3ff;
+}
+
+.menu{
+    display:flex;
+    gap:20px;
+}
+
+.menu button{
+    background:none;
+    border:none;
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.menu button:hover{
+    color:#4da3ff;
+}
+
+/*================ HERO =================*/
+
+.hero{
+    height:400px;
+    background:linear-gradient(90deg,#0f1117,#1b2a44);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:60px;
+}
+
+.hero h1{
+    font-size:48px;
+}
+
+.hero p{
+    margin-top:20px;
+    width:600px;
+    max-width:90%;
+    line-height:28px;
+}
+
+.hero button{
+    width:170px;
+    margin-top:30px;
+    padding:15px;
+    border:none;
+    background:#4da3ff;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+/*================ CONTENIDO =================*/
+
+section{
+    padding:40px;
+}
+
+section h2{
+    margin-bottom:20px;
+}
+
+.grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:20px;
+
+}
+
+.card{
+
+    background:#181c25;
+    border-radius:10px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:scale(1.04);
+
+}
+
+.thumb{
+
+    height:130px;
+    background:#2c3446;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:40px;
+
+}
+
+.info{
+
+    padding:15px;
+
+}
+
+.info h3{
+
+    margin-bottom:10px;
+
+}
+
+.info p{
+
+    color:#9aa6bb;
+    font-size:14px;
+
+}
+
+/*================ MODAL =================*/
+
+.modal{
+
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.85);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+
+}
+
+.modal-content{
+
+    width:90%;
+    max-width:1000px;
+    background:#181c25;
+    border-radius:10px;
+    overflow:hidden;
+
+}
+
+.modal video{
+
+    width:100%;
+    display:block;
+
+}
+
+.close{
+
+    position:absolute;
+    top:20px;
+    right:30px;
+    font-size:40px;
+    cursor:pointer;
+
+}
+
+/*================ FOOTER =================*/
+
+footer{
+
+    text-align:center;
+    padding:30px;
+    color:#888;
+
+}
+
+/*================ RESPONSIVE CELULAR =================*/
+
+@media(max-width:768px){
+
+.hero{
+
+padding:30px;
+height:300px;
+
+}
+
+.hero h1{
+
+font-size:32px;
+
+}
+
+.hero p{
+
+width:100%;
+
+}
+
+nav{
+
+flex-direction:column;
+height:auto;
+padding:15px;
+
+}
+
+.menu{
+
+margin-top:10px;
+flex-wrap:wrap;
+justify-content:center;
+
+}
+
+}
+
+/*================ SMART TV =================*/
+
+@media(min-width:1700px){
+
+body{
+
+font-size:22px;
+
+}
+
+.hero{
+
+height:550px;
+
+}
+
+.hero h1{
+
+font-size:72px;
+
+}
+
+.card{
+
+border-radius:20px;
+
+}
+
+.thumb{
+
+height:220px;
+font-size:70px;
+
+}
+
+.info h3{
+
+font-size:28px;
+
+}
+
+.info p{
+
+font-size:18px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+MULTIMEDIA
+</div>
+
+<div class="menu">
+
+<button>Inicio</button>
+<button>Cursos</button>
+<button>Tutoriales</button>
+<button>Favoritos</button>
+<button>Configuración</button>
+
+</div>
+
+</nav>
+
+<header class="hero">
+
+<h1>Bienvenido</h1>
+
+<p>
+Selecciona cualquier contenido para reproducirlo.
+Solo reemplaza la ruta del video por tus archivos.
+</p>
+
+<button onclick="abrirVideo('videos/demo.mp4')">
+Reproducir
+</button>
+
+</header>
+
+<section>
+
+<h2>Aplicaciones</h2>
+
+<div class="grid">
+
+<div class="card" onclick="abrirVideo('videos/video1.mp4')">
+
+<div class="thumb">
+🎬
+</div>
+
+<div class="info">
+
+<h3>Video 1</h3>
+
+<p>Descripción del contenido.</p>
+
+</div>
+
+</div>
+
+<div class="card" onclick="abrirVideo('videos/video2.mp4')">
+
+<div class="thumb">
+📚
+</div>
+
+<div class="info">
+
+<h3>Curso HTML</h3>
+
+<p>Introducción.</p>
+
+</div>
+
+</div>
+
+<div class="card" onclick="abrirVideo('videos/video3.mp4')">
+
+<div class="thumb">
+💻
+</div>
+
+<div class="info">
+
+<h3>Programación</h3>
+
+<p>Curso completo.</p>
+
+</div>
+
+</div>
+
+<div class="card" onclick="abrirVideo('videos/video4.mp4')">
+
+<div class="thumb">
+📱
+</div>
+
+<div class="info">
+
+<h3>Aplicación</h3>
+
+<p>Demostración.</p>
+
+</div>
+
+</div>
+
+<div class="card" onclick="abrirVideo('videos/video5.mp4')">
+
+<div class="thumb">
+🖥️
+</div>
+
+<div class="info">
+
+<h3>Windows</h3>
+
+<p>Tutorial.</p>
+
+</div>
+
+</div>
+
+<div class="card" onclick="abrirVideo('videos/video6.mp4')">
+
+<div class="thumb">
+🎓
+</div>
+
+<div class="info">
+
+<h3>Clase</h3>
+
+<p>Contenido multimedia.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+Plataforma Multimedia © 2026
+
+</footer>
+
+<div class="modal" id="modal">
+
+<span class="close" onclick="cerrarVideo()">&times;</span>
+
+<div class="modal-content">
+
+<video id="videoPlayer" controls>
+
+<source src="">
+
+Tu navegador no soporta video.
+
+</video>
+
+</div>
+
+</div>
+
+<script>
+
+const modal=document.getElementById("modal");
+const video=document.getElementById("videoPlayer");
+
+function abrirVideo(ruta){
+
+video.src=ruta;
+
+modal.style.display="flex";
+
+video.load();
+
+video.play();
+
+}
+
+function cerrarVideo(){
+
+video.pause();
+
+video.currentTime=0;
+
+modal.style.display="none";
+
+}
+
+window.onclick=function(e){
+
+if(e.target==modal){
+
+cerrarVideo();
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
